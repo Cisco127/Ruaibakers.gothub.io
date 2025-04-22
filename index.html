@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ruaibakers | Home</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="navbar">
+    <div class="logo">Ruaibakers</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="checkout.html">Cart</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Welcome to Ruaibakers</h1>
+    <p>Delicious pastries, cakes, and more — baked fresh daily!</p>
+    <a href="menu.html" class="btn">Explore Menu</a>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about">
+    <h2>About Us</h2>
+    <p>Ruaibakers is your trusted bakery for fresh and high-quality baked goods. Contact us at:</p>
+    <p>Email: ciscofranklyne@gmail.com</p>
+    <p>Phone: +254 736886389</p>
+  </section>
+
+  <!-- Review Section -->
+  <section id="reviews" class="reviews">
+    <h2>Customer Reviews</h2>
+    <form id="review-form">
+      <textarea placeholder="Write your review here..." required></textarea>
+      <input type="number" placeholder="Rate us (1-5)" min="1" max="5" required>
+      <button type="submit" class="btn">Submit Review</button>
+    </form>
+    <div id="review-list"></div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2025 Ruaibakers. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
