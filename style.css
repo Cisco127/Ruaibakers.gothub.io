@@ -1,0 +1,301 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  background: #fafafa;
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  margin-bottom: 1rem;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to right, #fc466b, #3f5efb);
+  color: white;
+  padding: 1rem 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.navbar ul {
+  display: flex;
+  list-style: none;
+}
+
+.navbar ul li {
+  margin: 0 1rem;
+}
+
+.navbar ul li a {
+  color: white;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.navbar ul li a:hover {
+  color: #f7e8a4;
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(to right, #ff9966, #ff5e62);
+  color: white;
+  text-align: center;
+  padding: 4rem 2rem;
+  background-size: cover;
+  background-position: center;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.hero p {
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+}
+
+.hero .btn {
+  background: white;
+  color: #ff5e62;
+  padding: 0.8rem 1.8rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.hero .btn:hover {
+  background: #ff5e62;
+  color: white;
+  transform: scale(1.1);
+}
+
+/* About Section */
+.about {
+  padding: 2rem;
+  background: #f4f4f4;
+  text-align: center;
+}
+
+.about h2 {
+  color: #3f5efb;
+  margin-bottom: 1rem;
+}
+
+.about p {
+  margin: 0.8rem 0;
+  line-height: 1.8;
+}
+
+/* Reviews Section */
+.reviews {
+  padding: 2rem;
+  background: #ffe6e6;
+}
+
+.reviews h2 {
+  color: #fc466b;
+  margin-bottom: 1.5rem;
+}
+
+.reviews form textarea,
+.reviews form input {
+  display: block;
+  width: 90%;
+  margin: 0.5rem auto;
+  padding: 0.7rem;
+  border: 2px solid #fc466b;
+  border-radius: 10px;
+  font-size: 1rem;
+}
+
+.reviews form .btn {
+  background: #3f5efb;
+  color: white;
+  padding: 0.7rem 1.5rem;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.reviews form .btn:hover {
+  background: #fc466b;
+}
+
+/* Menu Section */
+.menu {
+  padding: 2rem;
+}
+
+.menu h1 {
+  text-align: center;
+  color: #3f5efb;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.menu-section {
+  margin-bottom: 3rem;
+}
+
+.menu-section h2 {
+  color: #fc466b;
+  text-transform: uppercase;
+  border-bottom: 3px solid #fc466b;
+  display: inline-block;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.menu-item {
+  margin-bottom: 1.5rem;
+  border: 2px solid #f4f4f4;
+  border-radius: 10px;
+  padding: 1rem;
+  background: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.menu-item:hover {
+  transform: scale(1.05);
+}
+
+.menu-item h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.menu-item p {
+  margin: 0.5rem 0;
+}
+
+.menu-item .add-to-cart {
+  background: #ffc107;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.menu-item .add-to-cart:hover {
+  background: #ff5722;
+}
+
+/* Checkout Section */
+.checkout {
+  padding: 2rem;
+  background: #e3f2fd;
+}
+
+.checkout h1 {
+  text-align: center;
+  color: #3f5efb;
+  margin-bottom: 2rem;
+}
+
+.checkout form {
+  max-width: 500px;
+  margin: 0 auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.checkout form label {
+  display: block;
+  margin: 1rem 0 0.5rem;
+  font-weight: bold;
+}
+
+.checkout form input,
+.checkout form textarea {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border: 2px solid #3f5efb;
+  border-radius: 10px;
+  font-size: 1rem;
+}
+
+.checkout form .btn {
+  background: #3f5efb;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.checkout form .btn:hover {
+  background: #fc466b;
+}
+
+/* Confirmation Section */
+.confirmation {
+  padding: 2rem;
+  text-align: center;
+  background: #daf7e3;
+}
+
+.confirmation h1 {
+  color: #3f5efb;
+  margin-bottom: 1.5rem;
+}
+
+.confirmation p {
+  margin: 1rem 0;
+  font-size: 1.2rem;
+}
+
+.confirmation h2 {
+  margin-top: 2rem;
+  color: #fc466b;
+}
+
+.confirmation ul {
+  list-style: none;
+  padding: 0;
+}
+
+.confirmation ul li {
+  margin: 0.5rem 0;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 1rem;
+  background: linear-gradient(to right, #3f5efb, #fc466b);
+  color: white;
+  margin-top: 2rem;
+}
