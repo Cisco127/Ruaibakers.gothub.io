@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ruaibakers | Confirmation</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">Ruaibakers</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="confirmation">
+    <h1>Order Confirmation</h1>
+    <p>Thank you, <span id="customer-name">Customer</span>, for your order!</p>
+    <p>A confirmation email has been sent to <span id="customer-email">your email</span>.</p>
+    <p>Your order will be delivered on <span id="delivery-date">selected date</span>.</p>
+
+    <h2>Order Summary:</h2>
+    <ul id="order-summary">
+      <!-- Order items will be dynamically added here -->
+    </ul>
+    <p>Total: KSh <span id="order-total">0</span></p>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; 2025 Ruaibakers. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
