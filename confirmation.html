@@ -3,21 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Order Confirmation</title>
+  <title>Ruaibakers | Confirmation</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>Order Confirmation</h1>
+  <header class="navbar">
+    <div class="logo">Ruaibakers</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#menu">Menu</a></li>
+      </ul>
+    </nav>
   </header>
-  <main>
-    <p><strong>Customer Name:</strong> <span id="customer-name"></span></p>
-    <p><strong>Customer Email:</strong> <span id="customer-email"></span></p>
-    <p><strong>Delivery Date:</strong> <span id="delivery-date"></span></p>
-    <h2>Order Details:</h2>
+
+  <section class="confirmation">
+    <h1>Order Confirmation</h1>
+    <p>Thank you, <span id="customer-name">Customer</span>, for your order!</p>
+    <p>A confirmation email has been sent to <span id="customer-email">your email</span>.</p>
+    <p>Your order will be delivered on <span id="delivery-date">selected date</span>.</p>
+
+    <h2>Order Summary:</h2>
     <ul id="order-summary"></ul>
-    <p><strong>Total Amount:</strong> KSh <span id="order-total"></span></p>
-  </main>
+    <p>Total Amount: KSh <span id="order-total">0</span></p>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; 2025 Ruaibakers. All rights reserved.</p>
+  </footer>
+
   <script src="script.js"></script>
 </body>
 </html>
