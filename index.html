@@ -3,54 +3,58 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ruaibakers | Home</title>
-  <link rel="stylesheet" href="styles.css?v=1.0">
+  <title>Ruaibakers</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Header -->
-  <header class="navbar">
-    <div class="logo">Ruaibakers</div>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="menu.html">Menu</a></li>
-        <li><a href="#reviews">Reviews</a></li>
-        <li><a href="checkout.html">Cart</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <!-- Hero Section -->
-  <section class="hero">
+  <header>
     <h1>Welcome to Ruaibakers</h1>
-    <p>Delicious pastries, cakes, and more — baked fresh daily!</p>
-    <a href="menu.html" class="btn">Explore Menu</a>
-  </section>
+  </header>
+  <main>
+    <!-- Menu Section -->
+    <section>
+      <h2>Our Menu</h2>
+      <ul>
+        <li>
+          <span>Cake - KSh 500</span>
+          <button class="add-to-cart" data-item="Cake" data-price="500">Add to Cart</button>
+        </li>
+        <li>
+          <span>Cookies - KSh 200</span>
+          <button class="add-to-cart" data-item="Cookies" data-price="200">Add to Cart</button>
+        </li>
+        <li>
+          <span>Bread - KSh 150</span>
+          <button class="add-to-cart" data-item="Bread" data-price="150">Add to Cart</button>
+        </li>
+        <li>
+          <span>Cupcakes - KSh 300</span>
+          <button class="add-to-cart" data-item="Cupcakes" data-price="300">Add to Cart</button>
+        </li>
+      </ul>
+    </section>
 
-  <!-- About Section -->
-  <section id="about" class="about">
-    <h2>About Us</h2>
-    <p>Ruaibakers is your trusted bakery for fresh and high-quality baked goods. Contact us at:</p>
-    <p>Email: ciscofranklyne@gmail.com</p>
-    <p>Phone: +254 736886389</p>
-  </section>
+    <!-- Cart Section -->
+    <section>
+      <h2>Cart</h2>
+      <ul id="cart-items"></ul>
+      <p>Total: KSh <span id="cart-total">0</span></p>
+    </section>
 
-  <!-- Review Section -->
-  <section id="reviews" class="reviews">
-    <h2>Customer Reviews</h2>
-    <form id="review-form">
-      <textarea placeholder="Write your review here..." required></textarea>
-      <input type="number" placeholder="Rate us (1-5)" min="1" max="5" required>
-      <button type="submit" class="btn">Submit Review</button>
-    </form>
-    <div id="review-list"></div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <p>&copy; 2025 Ruaibakers. All rights reserved.</p>
-  </footer>
-
+    <!-- Checkout Section -->
+    <section>
+      <h2>Checkout</h2>
+      <form id="checkout-form">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+        <label for="date">Delivery Date:</label>
+        <input type="date" id="date" required>
+        <button type="submit">Place Order</button>
+      </form>
+    </section>
+  </main>
   <script src="script.js"></script>
 </body>
 </html>
