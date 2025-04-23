@@ -2,38 +2,32 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
+  line-height: 1.6;
 }
 
 header {
-  background-color: #ffcc80;
-  padding: 1rem;
+  background: #333;
+  color: #fff;
+  padding: 10px 20px;
   text-align: center;
-}
-
-header nav ul {
-  list-style: none;
-  padding: 0;
-}
-
-header nav ul li {
-  display: inline;
-  margin: 0 1rem;
-}
-
-header nav ul li a {
-  text-decoration: none;
-  color: #333;
 }
 
 main {
-  padding: 2rem;
+  padding: 20px;
 }
 
-footer {
-  background-color: #eee;
-  text-align: center;
-  padding: 1rem;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
+section {
+  margin-bottom: 20px;
+}
+
+button {
+  background: #333;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #555;
 }
