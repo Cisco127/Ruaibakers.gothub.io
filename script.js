@@ -8,7 +8,14 @@ document.querySelectorAll('.add-to-cart').forEach((button) => {
   button.addEventListener('click', () => {
     const item = button.dataset.item;
     const price = parseInt(button.dataset.price);
-    cart.push({ item, price });
+    const existingItem = cart.find((product) => product.item === item);
+
+    if (existingItem) {
+      existingItem.quantity += 1; // Increment quantity if the item already exists
+    } else {
+      cart.push({ item, price, quantity: 1 }); // Add new item with quantity 1
+    }
+
     localStorage.setItem('cart', JSON.stringify(cart)); // Save cart to localStorage
     alert(`${item} added to cart!`);
     updateCartSummary();
@@ -18,18 +25,20 @@ document.querySelectorAll('.add-to-cart').forEach((button) => {
 // Update cart summary dynamically
 function updateCartSummary() {
   const cartItems = document.getElementById('cart-items');
-  const cartTotal = document.getElementById('cart-total').querySelector('span');
+  const cartTotal = document.getElementById('cart-total')?.querySelector('span');
   cartItems.innerHTML = '';
   let total = 0;
 
   cart.forEach((product) => {
     const li = document.createElement('li');
-    li.textContent = `${product.item} - KSh ${product.price}`;
+    li.textContent = `${product.item} (Quantity: ${product.quantity}) - KSh ${product.price * product.quantity}`;
     cartItems.appendChild(li);
-    total += product.price;
+    total += product.price * product.quantity;
   });
 
-  cartTotal.textContent = total.toString();
+  if (cartTotal) {
+    cartTotal.textContent = total.toString();
+  }
 }
 
 // Update cart on page load
@@ -53,18 +62,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     cart.forEach((product) => {
       const li = document.createElement('li');
-      li.textContent = `${product.item} - KSh ${product.price}`;
+      li.textContent = `${product.item} (Quantity: ${product.quantity}) - KSh ${product.price * product.quantity}`;
       orderSummary.appendChild(li);
-      total += product.price;
+      total += product.price * product.quantity;
     });
 
-    orderTotal.textContent = total.toString();
+    if (orderTotal) {
+      orderTotal.textContent = total.toString();
+    }
   }
 });
 
 // EmailJS integration
 (function () {
-  emailjs.init('r7S7eB8SG444rogVC'); // Replace with your EmailJS public key
+  emailjs.init('V95x0zwzTfOBBTXrS'); // Replace with your EmailJS Public Key
 })();
 
 document.getElementById('checkout-form')?.addEventListener('submit', (e) => {
@@ -74,7 +85,7 @@ document.getElementById('checkout-form')?.addEventListener('submit', (e) => {
   const email = document.getElementById('email').value;
   const date = document.getElementById('date').value;
 
-  // Ensure cart data is loaded from localStorage
+  // Retrieve the cart from localStorage
   const currentCart = JSON.parse(localStorage.getItem('cart')) || [];
 
   // Check if cart is empty
@@ -83,21 +94,26 @@ document.getElementById('checkout-form')?.addEventListener('submit', (e) => {
     return;
   }
 
-  // Send order details via EmailJS
+  // Calculate the total amount
+  const total = currentCart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+  // Send the email using EmailJS
   emailjs
     .send('service_le4lkf5', 'template_of6il3c', {
       name,
       email,
       date,
-      cart: JSON.stringify(currentCart), // Send cart data as JSON
+      cart: currentCart, // Send the cart array
+      total, // Send the total amount
     })
-    .then(() => {
+    .then((response) => {
+      console.log('Email sent successfully:', response);
       alert('Order placed successfully! A confirmation email has been sent.');
       localStorage.removeItem('cart'); // Clear cart after successful order
       window.location.href = 'confirmation.html';
     })
     .catch((error) => {
-      console.error('Failed to send order notification:', error);
+      console.error('Failed to send email:', error);
       alert('Failed to send order notification. Please try again.');
     });
 });
