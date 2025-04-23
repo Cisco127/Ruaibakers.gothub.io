@@ -1,7 +1,7 @@
 // script.js
 
-// Cart functionality
-const cart = [];
+// Initialize cart from localStorage
+const cart = JSON.parse(localStorage.getItem('cart')) || [];
 
 // Add items to cart
 document.querySelectorAll('.add-to-cart').forEach((button) => {
@@ -9,6 +9,7 @@ document.querySelectorAll('.add-to-cart').forEach((button) => {
     const item = button.dataset.item;
     const price = parseInt(button.dataset.price);
     cart.push({ item, price });
+    localStorage.setItem('cart', JSON.stringify(cart)); // Save cart to localStorage
     alert(`${item} added to cart!`);
     updateCartSummary();
   });
@@ -31,8 +32,10 @@ function updateCartSummary() {
   cartTotal.textContent = total.toString();
 }
 
-// Populate confirmation page with order details
+// Update cart on page load
 document.addEventListener('DOMContentLoaded', () => {
+  updateCartSummary();
+
   const urlParams = new URLSearchParams(window.location.search);
   const name = urlParams.get('name');
   const email = urlParams.get('email');
@@ -61,13 +64,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // EmailJS integration
 (function () {
-  emailjs.init('n6-f23K5qDbf1QAHD'); // Replace with your EmailJS public key
+  emailjs.init('r7S7eB8SG444rogVC'); // Replace with your EmailJS public key
 })();
 
 document.getElementById('checkout-form')?.addEventListener('submit', (e) => {
+  e.preventDefault(); // Prevent default form submission
+
   const name = document.getElementById('name').value;
   const email = document.getElementById('email').value;
   const date = document.getElementById('date').value;
+
+  // Ensure cart data is loaded from localStorage
+  const currentCart = JSON.parse(localStorage.getItem('cart')) || [];
+
+  // Check if cart is empty
+  if (currentCart.length === 0) {
+    alert('Your cart is empty. Please add items before placing an order.');
+    return;
+  }
 
   // Send order details via EmailJS
   emailjs
@@ -75,12 +89,15 @@ document.getElementById('checkout-form')?.addEventListener('submit', (e) => {
       name,
       email,
       date,
-      cart: JSON.stringify(cart),
+      cart: JSON.stringify(currentCart), // Send cart data as JSON
     })
     .then(() => {
-      console.log('Order notification sent successfully!');
+      alert('Order placed successfully! A confirmation email has been sent.');
+      localStorage.removeItem('cart'); // Clear cart after successful order
+      window.location.href = 'confirmation.html';
     })
-    .catch(() => {
-      console.error('Failed to send order notification.');
+    .catch((error) => {
+      console.error('Failed to send order notification:', error);
+      alert('Failed to send order notification. Please try again.');
     });
 });
