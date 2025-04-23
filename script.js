@@ -25,7 +25,7 @@ document.querySelectorAll('.add-to-cart').forEach((button) => {
 // Update cart summary dynamically
 function updateCartSummary() {
   const cartItems = document.getElementById('cart-items');
-  const cartTotal = document.getElementById('cart-total')?.querySelector('span');
+  const cartTotal = document.getElementById('cart-total');
   cartItems.innerHTML = '';
   let total = 0;
 
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // EmailJS integration
 (function () {
-  emailjs.init('V95x0zwzTfOBBTXrS'); // Replace with your EmailJS Public Key
+  emailjs.init('AmtW32hwxXjkXi1uO'); // Replace with your EmailJS Public Key
 })();
 
 document.getElementById('checkout-form')?.addEventListener('submit', (e) => {
@@ -84,6 +84,7 @@ document.getElementById('checkout-form')?.addEventListener('submit', (e) => {
   const name = document.getElementById('name').value;
   const email = document.getElementById('email').value;
   const date = document.getElementById('date').value;
+  const phone = document.getElementById('phone').value;
 
   // Retrieve the cart from localStorage
   const currentCart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -102,18 +103,33 @@ document.getElementById('checkout-form')?.addEventListener('submit', (e) => {
     .send('service_le4lkf5', 'template_of6il3c', {
       name,
       email,
+      phone,
       date,
-      cart: currentCart, // Send the cart array
-      total, // Send the total amount
+      cart: currentCart.map(item => `${item.item} (x${item.quantity})`).join(', '),
+      total,
     })
-    .then((response) => {
-      console.log('Email sent successfully:', response);
+    .then(() => {
       alert('Order placed successfully! A confirmation email has been sent.');
       localStorage.removeItem('cart'); // Clear cart after successful order
       window.location.href = 'confirmation.html';
     })
     .catch((error) => {
-      console.error('Failed to send email:', error);
+      console.error('Failed to send order notification:', error);
       alert('Failed to send order notification. Please try again.');
     });
+});
+
+// Review form submission
+document.getElementById('review-form')?.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const reviewText = e.target.querySelector('textarea').value;
+  const rating = e.target.querySelector('input[type="number"]').value;
+
+  const reviewList = document.getElementById('review-list');
+  const reviewItem = document.createElement('div');
+  reviewItem.innerHTML = `<p>${reviewText}</p><p>Rating: ${rating}/5</p>`;
+  reviewList.appendChild(reviewItem);
+
+  e.target.reset();
 });
