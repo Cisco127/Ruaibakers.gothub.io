@@ -1,33 +1,83 @@
 body {
   font-family: Arial, sans-serif;
   margin: 0;
-  padding: 0;
   line-height: 1.6;
+  color: #333;
 }
 
-header {
-  background: #333;
-  color: #fff;
-  padding: 10px 20px;
+.navbar {
+  background-color: #ff6f61;
+  padding: 1rem;
   text-align: center;
 }
 
-main {
-  padding: 20px;
-}
-
-section {
-  margin-bottom: 20px;
-}
-
-button {
-  background: #333;
+.navbar .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
   color: #fff;
+}
+
+.navbar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.navbar ul li {
+  display: inline;
+  margin: 0 1rem;
+}
+
+.navbar ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.hero {
+  background-color: #f9d5e5;
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.hero .btn {
+  background-color: #ff6f61;
+  color: #fff;
+  padding: 0.5rem 1rem;
   border: none;
-  padding: 5px 10px;
+  font-size: 1rem;
   cursor: pointer;
 }
 
-button:hover {
-  background: #555;
+.about, .menu, .cart, .reviews, .checkout {
+  padding: 2rem 1rem;
+}
+
+.about {
+  background-color: #dcedc1;
+}
+
+.menu {
+  background-color: #ffcc80;
+}
+
+.cart {
+  background-color: #f0e68c;
+}
+
+.reviews {
+  background-color: #add8e6;
+}
+
+.checkout {
+  background-color: #ffe4e1;
+}
+
+footer {
+  text-align: center;
+  background-color: #ff6f61;
+  color: #fff;
+  padding: 1rem;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
 }
