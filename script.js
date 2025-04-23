@@ -1,28 +1,7 @@
-// script.js
-
 // Initialize cart from localStorage
-const cart = JSON.parse(localStorage.getItem('cart')) || [];
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-// Add items to cart
-document.querySelectorAll('.add-to-cart').forEach((button) => {
-  button.addEventListener('click', () => {
-    const item = button.dataset.item;
-    const price = parseInt(button.dataset.price);
-    const existingItem = cart.find((product) => product.item === item);
-
-    if (existingItem) {
-      existingItem.quantity += 1; // Increment quantity if the item already exists
-    } else {
-      cart.push({ item, price, quantity: 1 }); // Add new item with quantity 1
-    }
-
-    localStorage.setItem('cart', JSON.stringify(cart)); // Save cart to localStorage
-    alert(`${item} added to cart!`);
-    updateCartSummary();
-  });
-});
-
-// Update cart summary dynamically
+// Function to update cart summary dynamically
 function updateCartSummary() {
   const cartItems = document.getElementById('cart-items');
   const cartTotal = document.getElementById('cart-total');
@@ -39,6 +18,40 @@ function updateCartSummary() {
   if (cartTotal) {
     cartTotal.textContent = total.toString();
   }
+}
+
+// Add items to cart
+document.querySelectorAll('.add-to-cart').forEach((button) => {
+  button.addEventListener('click', () => {
+    const item = button.dataset.item;
+    const price = parseInt(button.dataset.price);
+    const quantityInput = button.previousElementSibling; // Get quantity input field
+    const quantity = parseInt(quantityInput.value) || 1; // Default to 1 if no quantity is entered
+
+    if (quantity <= 0) {
+      alert('Please enter a valid quantity.');
+      return;
+    }
+
+    const existingItem = cart.find((product) => product.item === item);
+
+    if (existingItem) {
+      existingItem.quantity += quantity; // Increment quantity if the item already exists
+    } else {
+      cart.push({ item, price, quantity }); // Add new item with specified quantity
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart)); // Save cart to localStorage
+    alert(`${item} (${quantity} pcs) added to cart!`);
+    updateCartSummary();
+  });
+});
+
+// Clear cart after checkout
+function clearCart() {
+  cart = [];
+  localStorage.removeItem('cart'); // Remove cart data from localStorage
+  updateCartSummary();
 }
 
 // Update cart on page load
@@ -70,6 +83,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (orderTotal) {
       orderTotal.textContent = total.toString();
     }
+
+    clearCart(); // Clear the cart after displaying the confirmation
   }
 });
 
